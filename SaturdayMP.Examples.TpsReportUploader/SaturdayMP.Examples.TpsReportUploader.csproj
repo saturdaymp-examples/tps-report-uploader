@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-SaturdayMP.Examples.TpsReportUploader-6695A41A-9D0F-4600-999F-6EE415F0943A</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="8.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\ConfirmEmail.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\ConfirmEmailChange.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\ExternalLogin.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\ForgotPassword.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\ForgotPasswordConfirmation.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\InvalidPasswordReset.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\InvalidUser.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Lockout.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Login.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\LoginWith2fa.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\LoginWithRecoveryCode.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\ChangePassword.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\DeletePersonalData.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\Disable2fa.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\Email.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\EnableAuthenticator.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\ExternalLogins.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\GenerateRecoveryCodes.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\Index.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\PersonalData.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\ResetAuthenticator.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\SetPassword.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\TwoFactorAuthentication.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Manage\_Imports.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\Register.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\RegisterConfirmation.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\ResendEmailConfirmation.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\ResetPassword.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\ResetPasswordConfirmation.razor" />
+      <_ContentIncludedByDefault Remove="Components\Account\Pages\_Imports.razor" />
+      <_ContentIncludedByDefault Remove="wwwroot\TpsReports\oroitz\mytpsreport.csv" />
+      <_ContentIncludedByDefault Remove="wwwroot\TpsReports\oroitz\mytpsreport.txt" />
+      <_ContentIncludedByDefault Remove="wwwroot\TpsReports\oroitz\NewFile1.tps_report" />
+      <_ContentIncludedByDefault Remove="wwwroot\TpsReports\oroitz\Notes.txt" />
+      <_ContentIncludedByDefault Remove="wwwroot\TpsReports\oroitz\test2.txt" />
+      <_ContentIncludedByDefault Remove="wwwroot\TpsReports\test.txt" />
+    </ItemGroup>
+
+</Project>

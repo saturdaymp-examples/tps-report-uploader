@@ -1,0 +1,24 @@
+@if (!string.IsNullOrEmpty(DisplayMessage))
+{
+    var statusMessageClass = IsError ? "danger" : "success";
+    <div class="alert alert-@statusMessageClass" role="alert">
+        @DisplayMessage
+    </div>
+}
+
+@code
+{
+    [Parameter]
+    public string? DisplayMessage { get; set; }
+    
+    [Parameter]
+    public bool IsError { get; set; } 
+    
+    internal void Show(string? message, bool isError = false)
+    {
+        DisplayMessage = message;
+        IsError = isError;
+        
+        StateHasChanged();
+    }
+}

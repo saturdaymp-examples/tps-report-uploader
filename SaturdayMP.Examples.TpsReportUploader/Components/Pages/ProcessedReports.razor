@@ -1,0 +1,105 @@
+@page "/ProcessedReports"
+
+@rendermode InteractiveServer
+
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using Microsoft.EntityFrameworkCore
+@using SaturdayMP.Examples.TpsReportUploader.Data
+@using Microsoft.AspNetCore.Authorization
+@using SaturdayMP.Examples.TpsReportUploader.Components.Shared
+
+@inject ApplicationDbContext DbContext
+@inject AuthenticationStateProvider AuthenticationState
+@inject IHostEnvironment Environment
+@inject ILogger<Index> Logger
+@inject IJSRuntime JS
+
+@attribute [Authorize]
+
+<h3>ProcessedReports</h3>
+
+<Alert @ref="_alert" />
+
+<QuickGrid Items="@DbContext.ReportProcessRunItems.Include(p => p.ReportProcessRun).Where(p => p.ApplicationUser.UserName == _userName)">
+    <PropertyColumn Property="@(c => c.ReportProcessRun.RunDate)" Format="yyyy-MM-dd" />
+    <PropertyColumn Property="@(c => c.ReportName)" />
+    @* Secure Download *@
+    @* <TemplateColumn Title="Download"> *@
+    @*     <button class="btn btn-sm" @onclick="@(() => OnDownloadClicked(context.ReportName))" >Download</button> *@
+    @* </TemplateColumn> *@
+    <TemplateColumn>
+        <button class="btn btn-sm btn-primary" onclick="downloadFile('@context.ReportName')">Download</button>
+    </TemplateColumn>
+</QuickGrid>
+
+@* Secure download *@
+@* <script> *@
+@*   window.downloadFileFromStream = async (fileName, contentStreamReference) => { *@
+@*     const arrayBuffer = await contentStreamReference.arrayBuffer(); *@
+@*     const blob = new Blob([arrayBuffer]); *@
+@*     const url = URL.createObjectURL(blob); *@
+@*     const anchorElement = document.createElement('a'); *@
+@*     anchorElement.href = url; *@
+@*     anchorElement.download = fileName ?? ''; *@
+@*     anchorElement.click(); *@
+@*     anchorElement.remove(); *@
+@*     URL.revokeObjectURL(url); *@
+@*   } *@
+@* </script> *@
+
+<script>
+  window.downloadFile = (fileName) => {
+    DotNet.invokeMethodAsync('SaturdayMP.Examples.TpsReportUploader', 'DownloadFile', fileName)
+      .then(data => {
+        const url = URL.createObjectURL(new Blob([data]));
+        const anchorElement = document.createElement('a');
+        anchorElement.href = url;
+        anchorElement.download = fileName ?? '';
+        anchorElement.click();
+        anchorElement.remove();
+        URL.revokeObjectURL(url);
+      }).catch(err =>
+          alert("Unexpected error downloading file.")
+      )
+    };
+</script>
+
+
+@code {
+    private string? _userName;
+
+    private Alert _alert;
+
+    private string FileDownloadPath(string fileName)
+    {
+        return Path.Combine(Environment.ContentRootPath, "processed_reports", fileName);
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationState.GetAuthenticationStateAsync();
+        _userName = authState.User.Identity.Name;
+    }
+    
+    [JSInvokable]
+    public static Task<byte[]> DownloadFile(string fileName)
+    {
+        try
+        {
+            return Task.FromResult(File.ReadAllBytes(Path.Combine("processed_reports", fileName)));
+        }
+        catch (Exception ex)
+        {
+            return Task.FromException<byte[]>(ex);
+        }
+    }
+    
+    // Secure download
+    // private async Task OnDownloadClicked(string fileName)
+    // {
+    //     var stream = File.OpenRead(FileDownloadPath(FileDownloadPath(fileName)));
+    //     using var streamRef = new DotNetStreamReference(stream: stream);
+    //
+    //     await JS.InvokeVoidAsync("downloadFileFromStream", fileName, streamRef);
+    // }
+}

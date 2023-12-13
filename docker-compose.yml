@@ -1,0 +1,7 @@
+services:
+  gobuster:
+    image: ghcr.io/oj/gobuster
+    volumes:
+      - ./WordLists:/wordlists
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

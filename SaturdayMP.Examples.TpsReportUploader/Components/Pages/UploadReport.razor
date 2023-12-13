@@ -1,0 +1,96 @@
+@page "/UploadReport"
+
+@rendermode InteractiveServer
+
+@using System.Security.Authentication
+@using Microsoft.AspNetCore.Authorization
+@using SaturdayMP.Examples.TpsReportUploader.Components.Shared
+
+@inject AuthenticationStateProvider AuthenticationState
+@inject IHostEnvironment Environment
+@inject ILogger<UploadReport> Logger
+
+@attribute [Authorize]
+
+<h3>Daily TPS File</h3>
+
+@if (FileUploaded())
+{
+    <div >
+        File uploaded: <a href="@FileDownloadPath()" download>@FileName()</a>
+    </div>
+}
+else
+{
+    <div>
+        No file uploaded for today, please upload one before the end of the day.
+    </div>
+}
+
+<div class="mt-3">
+    @if (FileUploaded())
+    {
+        <span class="form-label">Replace Existing File:</span>
+    }
+    else
+    {
+        <span class="form-label">Upload File:</span>
+    }
+    <InputFile OnChange="@UploadFile" class="ms-2"/>
+</div>
+<div class="mt-2">
+    <Alert @ref="_alert" />
+</div>
+
+
+
+@code {
+    private string _userName = default!;
+    
+    private Alert _alert;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationState.GetAuthenticationStateAsync();
+        if (authState.User.Identity != null) _userName = authState.User.Identity.Name ?? throw new AuthenticationException("User not authenticated to upload files!");
+    }
+
+    private string FileDownloadPath()
+    {
+        return Path.Combine("uploads", FileName());
+    }
+    
+    private string FilePath()
+    {
+        return Path.Combine(Environment.ContentRootPath, "wwwroot", "uploads", FileName());
+    }
+    
+    private string FileName()
+    {
+        return $"{_userName}-tpsreport.txt";
+    }
+    
+    private bool FileUploaded()
+    {
+        return File.Exists(FilePath());
+    }
+    
+    private async Task UploadFile(InputFileChangeEventArgs e)
+    {
+        var fileToUpload = e.File;
+        await using FileStream fs = new(FilePath(), FileMode.Create);
+        try
+        {
+            await fileToUpload.OpenReadStream().CopyToAsync(fs);
+            _alert.Show("Report successfully uploaded!");
+
+        }
+        catch (Exception ex)
+        {
+            fs.Close();
+            File.Delete(fileToUpload.Name);
+            Logger.LogError($"Failed to upload file {fileToUpload.Name}: {ex.Message}");
+            _alert.Show("Error occurred uploading the report.  Please try again.", true);
+        }
+    }
+}
