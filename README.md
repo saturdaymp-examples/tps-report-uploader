@@ -61,4 +61,4 @@ If you spot an issue, an improvement, or constructive criticism please open an [
 
 ## Acknowlegements ##
 
-Thank to you [EDMUG](https://edmug.net/) for the opportunity to present.  Also thank you to those involved in creating https://en.wikipedia.org/wiki/Office_Space and [TPS reports](https://en.wikipedia.org/wiki/TPS_report).
+Thank to you [EDMUG](https://edmug.net/) for the opportunity to present.  Also thank you to those involved in creating [Office Space](https://en.wikipedia.org/wiki/Office_Space) and [TPS reports](https://en.wikipedia.org/wiki/TPS_report).
