@@ -57,7 +57,7 @@ You can also install [GoBuster](https://github.com/OJ/gobuster) using the variou
 
 ## Feedback ##
 
-If you spot an issue, an improvement, or constructive criticism please open an [issue](https://github.com/saturdaymp-examples/tps-report-uploader/issues) or [pull requst](https://github.com/saturdaymp-examples/tps-report-uploader/pulls).
+If you spot an issue, an improvement, or constructive criticism please open an [issue](https://github.com/saturdaymp-examples/tps-report-uploader/issues) or [pull request](https://github.com/saturdaymp-examples/tps-report-uploader/pulls).
 
 ## Acknowlegements ##
 
