@@ -35,7 +35,7 @@ Seems like the Change Log is accessible without a login.  I wonder if it has som
 
 ### Fix ### 
 
-The fix is to put the Change Log behind authentication. Better yet don't include a Change Log page in the application. 
+The fix is to put the Change Log behind authentication.
 
 ```csharp 
 // Components/Pages/ChangeLog.razor 
