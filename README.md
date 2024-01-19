@@ -4,6 +4,8 @@ A demonstration of how to exploit some vulnerabilities and how to fix them in a 
 
 The application is designed as a mini capture the flag ([CTF](https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity))).  Your goal is to get all the TPS reports for Simar.  There is a detailed [walk through](WALKTHROUGH.md) that is similar to my in-person presentation.
 
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/saturdaymp?label=Sponsors&logo=githubsponsors&labelColor=3C444C)](https://github.com/sponsors/saturdaymp)
+
 ## Setup ##
 
 To run the application you need to have .NET 8 SDK installed.  To complete the Walk Through you need the following tools:
