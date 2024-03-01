@@ -1,8 +1,8 @@
 # TPS Report Uploader
 
-A demonstration of how to exploit some vulnerabilities and how to fix them in a .NET 8 [Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor) application that I originally presented at Edmonton .NET User Group ([EDMUG](edmug.net)) in [December 2023](https://www.meetup.com/edmonton-net-user-group/events/297820544/).
+A demonstration of how to exploit and fix vulnerabilities in a .NET 8 [Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor) application that I originally presented at Edmonton .NET User Group ([EDMUG](edmug.net)) in [December 2023](https://www.meetup.com/edmonton-net-user-group/events/297820544/).
 
-The application is designed as a mini capture the flag ([CTF](https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity))).  Your goal is to get all the TPS reports for Simar.  There is a detailed [walk through](WALKTHROUGH.md) that is similar to my in-person presentation.
+The TPS Report Uploader is a mini capture the flag ([CTF](https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity))).  Your goal is to get all the TPS reports for Simar.  There is a detailed text [walk through](WALKTHROUGH.md) that is similar to my in-person presentation and also a [video walkthrough](https://www.youtube.com/watch?v=uBnua-JZrec).
 
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/saturdaymp?label=Sponsors&logo=githubsponsors&labelColor=3C444C)](https://github.com/sponsors/saturdaymp)
 
